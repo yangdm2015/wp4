@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router';
 import Vue from 'vue';
-import Test from 'pages/Test/index.vue'
+import Test from "pages/Test/index.vue";
+import Table from "pages/Table/index.vue";
 
 
 Vue.use(VueRouter);
@@ -9,6 +10,12 @@ const routes = [
   {
     path: "/",
     component: Test,
+    name: "测试",
+  },
+  {
+    path: "/table",
+    component: Table,
+    name: "表格",
   },
 ];
 

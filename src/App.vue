@@ -10,22 +10,32 @@
                 <el-menu
                     default-active="1-4-1"
                     class="el-menu-vertical-demo"
-                    @open="handleOpen"
-                    @close="handleClose"
+                    :router="true"
                     :collapse="isCollapse"
                 >
-                    <el-menu-item index="0">
-                        <i class="el-icon-setting"></i>
-                        <span slot="title">导航1</span>
-                    </el-menu-item>
-                      <el-menu-item index="1">
-                        <i class="el-icon-setting"></i>
-                        <span slot="title">导航2</span>
-                    </el-menu-item>
+                    <div
+                        v-for="(item,index) in $router.options.routes.filter(i=>i.name)"
+                        :key="item.path"
+                    >
+                        <el-submenu :index="index" v-if="item.children">
+                            <i class="el-icon-menu"></i>
+                            <el-menu-item
+                                v-for="child in item.children"
+                                :key="child.path"
+                                :index="child.path"
+                            >
+                                <span slot="title">{{child.name}}</span>
+                            </el-menu-item>
+                        </el-submenu>
+                        <el-menu-item v-else :index="item.path">
+                            <i class="el-icon-location"></i>
+                            <span slot="title">{{item.name}}</span>
+                        </el-menu-item>
+                    </div>
                 </el-menu>
             </el-aside>
             <el-main>
-                  <router-view></router-view>
+                <router-view></router-view>
             </el-main>
         </el-container>
     </el-container>
