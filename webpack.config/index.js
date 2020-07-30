@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
+const resolve = dir => path.resolve(__dirname, dir);
 module.exports = {
     mode: 'development',
     entry: path.resolve(__dirname, "../src/main.ts") , // 项目的入口文件，webpack会从main.ts开始，把所有依赖的js都加载打包
@@ -23,6 +23,7 @@ module.exports = {
     resolve: {
         alias: {
             vue$: "vue/dist/vue.esm.js",
+            pages: resolve('../src/pages')
         },
         extensions: ['.ts', '.js'],
     },
