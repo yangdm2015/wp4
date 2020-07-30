@@ -8,7 +8,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: path.resolve(__dirname, "../src/main.js") , // 项目的入口文件，webpack会从main.js开始，把所有依赖的js都加载打包
+    entry: path.resolve(__dirname, "../src/main.ts") , // 项目的入口文件，webpack会从main.ts开始，把所有依赖的js都加载打包
     output: {
         path: path.resolve(__dirname, "../dist"), // 项目的打包文件路径
         publicPath: path.join(__dirname, "../dist"), // 通过devServer访问路径
@@ -24,6 +24,7 @@ module.exports = {
         alias: {
             vue$: "vue/dist/vue.esm.js",
         },
+        extensions: ['.ts', '.js'],
     },
     module: {
         rules: [
@@ -66,15 +67,23 @@ module.exports = {
                 test: /\.vue$/,
                 loader: "vue-loader",
             },
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                exclude: /node_modules/,
+                options: {
+                    appendTsSuffixTo: [/\.vue$/],
+                }
+            },
         ],
     },
     plugins: [
         new webpack.SourceMapDevToolPlugin({
             filename: '[file].map',
         }),
-        new webpack.DefinePlugin({
-            'process.env': { NODE_ENV: '"development"' }
-        }),
+        // new webpack.DefinePlugin({
+        //     'process.env': { NODE_ENV: '"development"' }
+        // }),
         new VueLoaderPlugin(),
         new WriteFilePlugin(),
         new HtmlWebpackPlugin({
@@ -83,7 +92,7 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new AssetsWebpackPlugin({
-            path: path.join(__dirname, "dist"),
+            path: path.join(__dirname, "../dist"),
             filename: 'index.json',
             processOutput(assets) {
                 delete assets[''];

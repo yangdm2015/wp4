@@ -1,0 +1,19 @@
+/* tsconfig.json */
+{
+    "compilerOptions": {
+        "target": "es5", /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
+        "module": "commonjs", /* https://segmentfault.com/q/1010000020094884  必须得写commonjs */
+        "sourceMap": true, /* Generates corresponding '.map' file. */
+        "outDir": "./dist/", /* Redirect output structure to the directory. */
+        "strict": true, /* Enable all strict type-checking options. */
+        "noImplicitAny": true, /* Raise error on expressions and declarations with an implied 'any' type. */
+        "baseUrl": "./", /* Base directory to resolve non-absolute module names. */
+        "esModuleInterop": true, /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
+    },
+    "include": [
+        "src/**/*", "src/shims-vue.d.ts",
+    ],
+    "exclude": [
+        "node_modules",
+    ],
+}
