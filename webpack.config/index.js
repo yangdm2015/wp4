@@ -13,12 +13,14 @@ module.exports = {
         path: path.resolve(__dirname, "../dist"), // 项目的打包文件路径
         publicPath: path.join(__dirname, "../dist"), // 通过devServer访问路径
         filename: "[name]-bundle-[hash].js", // 打包后的文件名
+        publicPath: '/'
     },
     devServer: {
         contentBase: path.join(__dirname, "../dist"),
         compress: true,
         port: 9000,
-        overlay: true
+        overlay: true,
+        historyApiFallback: true, // 这句话
     },
     resolve: {
         alias: {

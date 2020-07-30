@@ -1,7 +1,12 @@
 import VueRouter from 'vue-router';
 import Vue from 'vue';
 import Test from "pages/Test/index.vue";
-import Table from "pages/Table/index.vue";
+// import Table from "pages/Table/index.vue";
+const Table = () => {
+    let r = import("pages/Test/index.vue");
+    console.log('r=',r)
+    return r
+}
 
 
 Vue.use(VueRouter);
@@ -9,13 +14,17 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    component: Test,
-    name: "测试",
+    redirect: '/test',
   },
   {
     path: "/table",
     component: Table,
     name: "表格",
+  },
+  {
+    path: "/test",
+    component: Test,
+    name: "测试",
   },
 ];
 
