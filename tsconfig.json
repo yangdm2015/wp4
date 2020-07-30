@@ -9,6 +9,7 @@
         "noImplicitAny": true, /* Raise error on expressions and declarations with an implied 'any' type. */
         "baseUrl": "./", /* Base directory to resolve non-absolute module names. */
         "esModuleInterop": true, /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
+        "experimentalDecorators": true,
     },
     "include": [
         "src/**/*", "src/shims-vue.d.ts",
