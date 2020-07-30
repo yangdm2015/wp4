@@ -3,6 +3,8 @@ var webpack = require("webpack");
 const WriteFilePlugin = require("write-file-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const AssetsWebpackPlugin = require('assets-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode:'development',
@@ -10,7 +12,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "./dist"), // 项目的打包文件路径
     publicPath: "/dist/", // 通过devServer访问路径
-    filename: "build.js", // 打包后的文件名
+    filename: "[name]-bundle-[hash].js", // 打包后的文件名
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
@@ -55,10 +57,18 @@ module.exports = {
     new VueLoaderPlugin(),
     new WriteFilePlugin(),
     new HtmlWebpackPlugin({
-      // filename: "index.html",
-      // template: "index.html",
       template: "./src/template.html",
       inject: true,
     }),
+    new CleanWebpackPlugin(),
+    new AssetsWebpackPlugin({
+      path: path.join(__dirname, "dist"),
+      filename: 'index.json',
+      processOutput(assets) {
+        delete assets[''];
+        return JSON.stringify(assets, null, 4);
+      },
+      prettyPrint: true
+    })
   ],
 };
