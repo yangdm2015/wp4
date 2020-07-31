@@ -29,15 +29,6 @@ module.exports = {
         },
         extensions: ['.ts', '.js'],
     },
-    optimization:{
-        splitChunks: {
-            chunks: 'all',
-            name: () => {
-                return '__common';
-            },
-            // minChunks: 2
-        }
-    },
     module: {
         rules: [
             {

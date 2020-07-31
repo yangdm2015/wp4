@@ -22,7 +22,7 @@ const routes = [
   {
     path: "/table",
     // component: Table,
-    component: ()=>import("../pages/Table/index.vue"),
+    component: ()=>import("pages/Table/index.vue"),
     name: "表格",
   },
   {

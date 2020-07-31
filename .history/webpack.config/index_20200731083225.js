@@ -32,10 +32,6 @@ module.exports = {
     optimization:{
         splitChunks: {
             chunks: 'all',
-            name: () => {
-                return '__common';
-            },
-            // minChunks: 2
         }
     },
     module: {

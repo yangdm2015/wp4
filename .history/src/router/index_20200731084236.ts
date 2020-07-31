@@ -9,7 +9,7 @@ import Test from "pages/Test/index.vue";
 //   // return Promise.resolve(r)
 //   return r
 // }
-// const Table = () =>import("pages/Test/index.vue");
+const Table = () =>import("pages/Test/index.vue");
 
 
 Vue.use(VueRouter);
@@ -21,8 +21,8 @@ const routes = [
   },
   {
     path: "/table",
-    // component: Table,
-    component: ()=>import("../pages/Table/index.vue"),
+    component: Table,
+    // component: ()=>import("pages/Table/index.vue"),
     name: "表格",
   },
   {

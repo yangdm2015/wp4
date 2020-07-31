@@ -3,13 +3,12 @@ import Vue from 'vue';
 import Test from "pages/Test/index.vue";
 // import Table from "pages/Table/index.vue";
 // const Table = () => {
-//   let r = import("pages/Test/index.vue");
-//   // const r = require("pages/Test/index.vue")
-//   console.log('r=',r)
-//   // return Promise.resolve(r)
-//   return r
+//     // let r = import("pages/Test/index.vue");
+//     const r = require("pages/Test/index.vue")
+//     console.log('r=',r)
+//     // return Promise.resolve(r)
+//     return r
 // }
-// const Table = () =>import("pages/Test/index.vue");
 
 
 Vue.use(VueRouter);
@@ -22,7 +21,7 @@ const routes = [
   {
     path: "/table",
     // component: Table,
-    component: ()=>import("../pages/Table/index.vue"),
+    component: ()=>import("pages/Table/index.vue"),
     name: "表格",
   },
   {

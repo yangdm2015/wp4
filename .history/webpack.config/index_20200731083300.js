@@ -35,7 +35,7 @@ module.exports = {
             name: () => {
                 return '__common';
             },
-            // minChunks: 2
+            minChunks: 2
         }
     },
     module: {

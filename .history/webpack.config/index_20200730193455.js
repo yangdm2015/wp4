@@ -29,15 +29,6 @@ module.exports = {
         },
         extensions: ['.ts', '.js'],
     },
-    optimization:{
-        splitChunks: {
-            chunks: 'all',
-            name: () => {
-                return '__common';
-            },
-            // minChunks: 2
-        }
-    },
     module: {
         rules: [
             {
@@ -103,14 +94,14 @@ module.exports = {
             inject: true,
         }),
         new CleanWebpackPlugin(),
-        // new AssetsWebpackPlugin({
-        //     path: path.join(__dirname, "../dist"),
-        //     filename: 'index.json',
-        //     processOutput(assets) {
-        //         delete assets[''];
-        //         return JSON.stringify(assets, null, 4);
-        //     },
-        //     prettyPrint: true
-        // })
+        new AssetsWebpackPlugin({
+            path: path.join(__dirname, "../dist"),
+            filename: 'index.json',
+            processOutput(assets) {
+                delete assets[''];
+                return JSON.stringify(assets, null, 4);
+            },
+            prettyPrint: true
+        })
     ],
 };
