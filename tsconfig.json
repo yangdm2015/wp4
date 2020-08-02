@@ -1,20 +1,60 @@
 /* tsconfig.json */
 {
-    "compilerOptions": {
-        "target": "es5", /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
-        "module": "commonjs", /* https://segmentfault.com/q/1010000020094884  必须得写commonjs */
-        "sourceMap": true, /* Generates corresponding '.map' file. */
-        "outDir": "./dist/", /* Redirect output structure to the directory. */
-        "strict": true, /* Enable all strict type-checking options. */
-        "noImplicitAny": true, /* Raise error on expressions and declarations with an implied 'any' type. */
-        "baseUrl": "./", /* Base directory to resolve non-absolute module names. */
-        "esModuleInterop": true, /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
-        "experimentalDecorators": true,
-    },
-    "include": [
-        "src/**/*", "src/shims-vue.d.ts",
-    ],
-    "exclude": [
-        "node_modules",
-    ],
+  "compilerOptions": {
+    // "target": "esnext",
+    "target": "es2019",
+    "module": "es2020",
+    "moduleResolution": "node",
+    //  "target": "es5", /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
+    //     "module": "commonjs", /* https://segmentfault.com/q/1010000020094884  必须得写commonjs */
+    "sourceMap": true /* Generates corresponding '.map' file. */,
+    "outDir": "./dist/" /* Redirect output structure to the directory. */,
+    "strict": true /* Enable all strict type-checking options. */,
+    "noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */,
+    "baseUrl": "./" /* Base directory to resolve non-absolute module names. */,
+    "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
+    "experimentalDecorators": true
+  },
+  //   "include": ["src/**/*", "src/shims-vue.d.ts"],
+  //   "exclude": ["node_modules"]
+  // "compilerOptions": {
+  //     "target": "esnext",
+  //     "module": "esnext",
+  //     "strict": true,
+  //     "jsx": "preserve",
+  //     "importHelpers": true,
+  //     "moduleResolution": "node",
+  //     "experimentalDecorators": true,
+  //     "esModuleInterop": true,
+  //     "allowSyntheticDefaultImports": true,
+  //     // 定义一个变量就必须给它一个初始值
+  //     "strictPropertyInitialization": false,
+  //     // 允许编译javascript文件
+  //     "allowJs": true,
+  //     "sourceMap": true,
+  //     // 忽略 this 的类型检查, Raise error on this expressions with an implied any type.
+  //     "noImplicitThis": false,
+  //     "baseUrl": ".",
+  //     // 给错误和消息设置样式，使用颜色和上下文。
+  //     "pretty": true,
+  //     "paths": {
+  //         "@/*": [
+  //             "src/*"
+  //         ]
+  //     },
+  //     "lib": [
+  //         "esnext",
+  //         "dom",
+  //         "dom.iterable",
+  //         "scripthost"
+  //     ]
+  // },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": ["node_modules"]
 }

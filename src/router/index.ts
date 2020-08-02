@@ -1,4 +1,4 @@
-import VueRouter from 'vue-router';
+import VueRouter, { RouteConfig } from "vue-router";
 import Vue from 'vue';
 import Test from "pages/Test/index.vue";
 // import Table from "pages/Table/index.vue";
@@ -14,16 +14,17 @@ import Test from "pages/Test/index.vue";
 
 Vue.use(VueRouter);
 
-const routes = [
+const routes: Array<RouteConfig> = [
   {
     path: "/",
-    redirect: '/test',
+    redirect: "/test",
   },
   {
     path: "/table",
-    // component: Table,
-    component: ()=>import("../pages/Table/index.vue"),
     name: "表格",
+    // component: Table,
+    component: () =>
+      import(/* webpackChunkName: "Table1234" */ "../pages/Table/index.vue"),
   },
   {
     path: "/test",
