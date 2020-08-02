@@ -1,40 +1,31 @@
 <template>
-    <el-table :data="tableData" style="width: 100%">
-        <el-table-column prop="date" label="日期" width="180"></el-table-column>
-        <el-table-column prop="name" label="姓名" width="180"></el-table-column>
-        <el-table-column prop="address" label="地址"></el-table-column>
-    </el-table>
+    <div>
+        <h1>我是表格wraper</h1>
+        <el-button @click="changeShow">点我{{show?'隐藏':'显示'}}</el-button>
+        <div v-if="show">
+            <tb></tb>
+        </div>
+    </div>
 </template>
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
+// import tb from './tb.vue'
 interface Person {
     name: string;
     date: string;
     address: string;
 }
-export default class tb extends Vue {
-    tableData: Array<Person> = [
-        {
-            date: "2016-05-02",
-            name: "王小虎",
-            address: "上海市普陀区金沙江路 1518 弄"
-        },
-        {
-            date: "2016-05-04",
-            name: "王小虎",
-            address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {
-            date: "2016-05-01",
-            name: "王小虎",
-            address: "上海市普陀区金沙江路 1519 弄"
-        },
-        {
-            date: "2016-05-03",
-            name: "王小虎",
-            address: "上海市普陀区金沙江路 1516 弄"
-        }
-    ];
+
+@Component({
+    components: {
+        tb: () => import("./tb.vue")
+    }
+})
+export default class tbPage extends Vue {
+    show: Boolean = false;
+    changeShow() {
+        this.show = !this.show;
+    }
 }
 </script>
