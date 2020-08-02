@@ -83,7 +83,7 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new AssetsWebpackPlugin({
-            path: path.join(__dirname, "dist"),
+            path: path.join(__dirname, "../dist"),
             filename: 'index.json',
             processOutput(assets) {
                 delete assets[''];
