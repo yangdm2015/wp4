@@ -12,7 +12,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "../dist"), // 项目的打包文件路径
         publicPath: path.join(__dirname, "../dist"), // 通过devServer访问路径
-        filename: "[name]-bundle-[hash].js", // 打包后的文件名
+        // contenthash 与缓存优化：https://zhuanlan.zhihu.com/p/78331695
+        filename: "[name]-bundle-[contenthash].js", // 打包后的文件名
         publicPath: '/'
     },
     devServer: {
@@ -35,8 +36,10 @@ module.exports = {
             name: () => {
                 return '__common';
             },
-            // minChunks: 2
-        }
+            minChunks: 2
+        },
+        // runtimeChunk 与缓存优化：https://zhuanlan.zhihu.com/p/78331695
+        runtimeChunk:true
     },
     module: {
         rules: [
@@ -104,6 +107,7 @@ module.exports = {
             inject: true,
         }),
         new CleanWebpackPlugin(),
+        new webpack.HashedModuleIdsPlugin()
         // new AssetsWebpackPlugin({
         //     path: path.join(__dirname, "../dist"),
         //     filename: 'index.json',
