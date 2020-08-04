@@ -4,7 +4,10 @@ const WriteFilePlugin = require("write-file-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const { library } = require('./dll.config')
 const resolve = dir => path.resolve(__dirname, dir);
 module.exports = {
     mode: 'development',
@@ -107,7 +110,29 @@ module.exports = {
             inject: true,
         }),
         new CleanWebpackPlugin(),
-        new webpack.HashedModuleIdsPlugin()
+        new webpack.HashedModuleIdsPlugin(),
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'disabled',
+            generateStatsFile:true,
+            statsOptions:{source:false}
+            // reportFilename: `${pathConfig.BundleAnalyzer}/${Date.now()}.html`
+        }),
+        ...Object.keys(library).reduce((prev,cur)=>{
+            prev=prev.concat([
+                new webpack.DllReferencePlugin({
+                    manifest: resolve(`../dll/${cur}.manifest.json`)
+                }),
+                new AddAssetHtmlPlugin({
+                    filepath: resolve(`../dll/dll.${cur}.js`)
+                })
+            ])
+            return prev
+        },[])
+        
+        // map(name=>{
+        //     return 
+        // })
+       
         // new AssetsWebpackPlugin({
         //     path: path.join(__dirname, "../dist"),
         //     filename: 'index.json',
