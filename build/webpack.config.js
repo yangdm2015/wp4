@@ -117,17 +117,17 @@ module.exports = {
             statsOptions:{source:false}
             // reportFilename: `${pathConfig.BundleAnalyzer}/${Date.now()}.html`
         }),
-        ...Object.keys(library).reduce((prev,cur)=>{
-            prev=prev.concat([
-                new webpack.DllReferencePlugin({
-                    manifest: resolve(`../dll/${cur}.manifest.json`)
-                }),
-                new AddAssetHtmlPlugin({
-                    filepath: resolve(`../dll/dll.${cur}.js`)
-                })
-            ])
-            return prev
-        },[])
+        // ...Object.keys(library).reduce((prev,cur)=>{
+        //     prev=prev.concat([
+        //         new webpack.DllReferencePlugin({
+        //             manifest: resolve(`../dll/${cur}.manifest.json`)
+        //         }),
+        //         new AddAssetHtmlPlugin({
+        //             filepath: resolve(`../dll/dll.${cur}.js`)
+        //         })
+        //     ])
+        //     return prev
+        // },[])
         
         // map(name=>{
         //     return 
