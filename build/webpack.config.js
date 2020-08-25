@@ -11,12 +11,13 @@ const { library } = require('./dll.config')
 const resolve = dir => path.resolve(__dirname, dir);
 module.exports = {
     mode: 'development',
-    entry: path.resolve(__dirname, "../src/main.ts") , // 项目的入口文件，webpack会从main.ts开始，把所有依赖的js都加载打包
+    entry: [path.resolve(__dirname, "../src/main.ts")] , // 项目的入口文件，webpack会从main.ts开始，把所有依赖的js都加载打包
     output: {
         path: path.resolve(__dirname, "../dist"), // 项目的打包文件路径
         publicPath: path.join(__dirname, "../dist"), // 通过devServer访问路径
         // contenthash 与缓存优化：https://zhuanlan.zhihu.com/p/78331695
-        filename: "[name]-bundle-[contenthash].js", // 打包后的文件名
+        // filename: "[name]-bundle-[contenthash].js", // 打包后的文件名
+        filename: "[name]-bundle-[hash].js", // 打包后的文件名
         publicPath: '/'
     },
     devServer: {
@@ -129,9 +130,7 @@ module.exports = {
         //     return prev
         // },[])
         
-        // map(name=>{
-        //     return 
-        // })
+   
        
         // new AssetsWebpackPlugin({
         //     path: path.join(__dirname, "../dist"),
