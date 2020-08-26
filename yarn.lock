@@ -1740,7 +1740,7 @@ concat-stream@^1.5.0:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-connect-history-api-fallback@^1.6.0:
+connect-history-api-fallback@^1.1.0, connect-history-api-fallback@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/connect-history-api-fallback/-/connect-history-api-fallback-1.6.0.tgz#8b32089359308d111115d81cad3fceab888f97bc"
 
@@ -3419,6 +3419,13 @@ koa-compose@^4.1.0:
   version "4.1.0"
   resolved "https://registry.npm.taobao.org/koa-compose/download/koa-compose-4.1.0.tgz#507306b9371901db41121c812e923d0d67d3e877"
   integrity sha1-UHMGuTcZAdtBEhyBLpI9DWfT6Hc=
+
+koa-connect-history-api-fallback@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.npm.taobao.org/koa-connect-history-api-fallback/download/koa-connect-history-api-fallback-0.3.1.tgz#068ffee68f3a7e85e998b63d0c5a3f05b68d534d"
+  integrity sha1-Bo/+5o86foXpmLY9DFo/BbaNU00=
+  dependencies:
+    connect-history-api-fallback "^1.1.0"
 
 koa-convert@^1.2.0:
   version "1.2.0"
